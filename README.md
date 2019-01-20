@@ -1,4 +1,6 @@
 This project is about the interface to search and/or favorite beers.
+It's a work to **Turing Company**.
+
 ## Used Technologies
 ReactJS 
 
