@@ -1,32 +1,130 @@
-.App {
+/* Header */
+
+header {
+  background: #F79400;
+  padding: 0 0 20px 0;
+  color: #ffffff;
+  width: 100%;
+}
+
+header h3 {
+  margin: 30px 0 0 0;
+}
+
+header small {
+  margin: 0 0 5px 0;
+}
+
+header a.nav-link {
+  color: #ffffff;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.justify-content-end {
+  transition: top 0.3s;
+  position: fixed;
+  z-index: 1;
+  background: #F79400;
+  left: 0;
+  right: 0;
+}
+
+/* Cards */
+
+img.card-img-top {
+  width: auto;
+  margin: 10px auto;
+  height: 167px;
+}
+
+.card {
+  margin: 10px 0 0 0;
+}
+
+.card {
+  margin: 10px 0 0 0;
   text-align: center;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
+.card-title {
+  color: #F79400;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.card-subtitle {
+  font-size: 13px;
+  color: #999999;
 }
 
-.App-link {
-  color: #61dafb;
+.card .btn-fav {
+  position: absolute;
+  display: block;
+  font-size: 20px;
+  right: 5px;
+  top: 5px;
+}
+.fas.fa-star {
+  color: #F79400;
+}
+.far.fa-star {
+  color: #000000;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.card:hover {
+  box-shadow: 0px 0px 12px #999999;
+  cursor: pointer;
+}
+
+.card-container {
+
+}
+
+/* Modal */
+
+button.btn-close-modal.btn.btn-link {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+}
+
+.modal-body {
+  margin-top: 33px;
+  color: #999999;
+}
+
+.modal-body img {
+  float: left;
+  width: 120px;
+  margin: 10px 30px;
+}
+
+.modal-body h2, .modal-body h3 {
+  color: #F79400;
+}
+
+.modal-body small {
+  font-size: 20px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.line-separate {
+  display: block;
+  height: 10px;
+  margin-bottom: 15px;
+}
+
+.line-separate span {
+  height: 7px;
+  width: 89px;
+  display: block;
+  float: left;
+  background: #B33E9A;
+}
+
+.similar-container img.card-img-top {
+  height: 100px;
+  width: auto !important;
+  float: none;
 }
