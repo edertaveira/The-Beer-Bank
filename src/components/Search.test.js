@@ -1,9 +1,9 @@
 import React from 'react';
-import { shallow } from 'enzyme';
-import { Favourite } from './Favourite';
+import { render, shallow } from 'enzyme';
 import { Beer } from './Beer';
+import { Search } from './Search';
 
-describe('<Favourite />', () => {
+describe('<Search />', () => {
     it('render the beers', () => {
         const props = {
             updateInSearch: () => {
@@ -28,10 +28,10 @@ describe('<Favourite />', () => {
                 "image_url": "https://images.punkapi.com/v2/193.png"
             }
         ]
-        const wrapper = shallow(<Favourite {...props}
+        const wrapper = shallow(<Search {...props}
             beers={beers}
-            loadFavourites={() => {}}
         />);
         expect(wrapper.find(Beer).length).toBe(beers.length);
     })
+
 })

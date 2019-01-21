@@ -1,16 +1,14 @@
 import React, { Component } from 'react';
 import './App.css';
 
-import {
-  Nav, NavItem, Input, Modal, ModalBody, Button, InputGroupAddon, InputGroup,
-  Card, CardImg, CardBody, CardTitle, CardSubtitle
-} from 'reactstrap';
-import { BrowserRouter as Router, Route, Link, Redirect } from 'react-router-dom';
+import { Modal, ModalBody, Button, Card, CardImg, CardBody, CardTitle, CardSubtitle } from 'reactstrap';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { instanceOf } from 'prop-types';
 import { withCookies, Cookies } from 'react-cookie';
 import { Favourite } from './components/Favourite';
 import { Home } from './components/Home';
 import { Search } from './components/Search';
+import { Header } from './components/Header';
 
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function () {
@@ -186,32 +184,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <header>
-            <div className="container">
-              <Nav className="justify-content-end" id="navbar">
-                <NavItem>
-                  <Link className="nav-link" to="/">Home</Link>
-                </NavItem>
-                <NavItem>
-                  <Link className="nav-link" to="/favourite">Favourite</Link>
-                </NavItem>
-              </Nav>
-
-              <div className="row justify-content-md-center">
-                <div className="col col-lg-6 text-center">
-                  <h3>The Beer Bank</h3>
-                  <small>Find your favorite beer here</small>
-                  <InputGroup>
-                    <Input onKeyUp={this.handleOnKeyUp} type="text" id="search" aria-describedby="search" placeholder="Search for beer name" />
-                    <InputGroupAddon addonType="append">
-                      {!this.state.inSearch && <Button disabled color="secondary"><i className="fa fa-times"></i></Button>}
-                      {this.state.inSearch && <Button onClick={this.clearSearch} color="secondary"><i className="fa fa-times"></i></Button>}
-                    </InputGroupAddon>
-                  </InputGroup>
-                </div>
-              </div>
-            </div>
-          </header>
+          <Header {...this.props} handleOnKeyUp={this.handleOnKeyUp} inSearch={this.state.inSearch} clearSearch={this.clearSearch} />
           <div className="container mt-5">
             <Route exact path='/' render={(props) => {
               return (<Home
