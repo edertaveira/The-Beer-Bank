@@ -36,7 +36,8 @@ class App extends Component {
       similar: [],
       favourites: [],
       isTyping: false,
-      inSearch: false
+      inSearch: false, 
+      isLoading: false
     }
     this.handleOnScroll = this.handleOnScroll.bind(this);
     this.handleOnKeyUp = this.handleOnKeyUp.bind(this);
@@ -145,10 +146,10 @@ class App extends Component {
 
   loadBeers() {
     const newPage = this.state.page + 1;
-    this.setState({ page: newPage });
+    this.setState({ page: newPage, isLoading: true });
     this.props.Punkapi.getBeers(newPage).then((res) => {
       let data = this.state.beers.concat(res.data);
-      this.setState({ beers: data });
+      this.setState({ beers: data, isLoading: false });
     });
   }
 
@@ -162,10 +163,11 @@ class App extends Component {
   loadFavourites() {
     const { cookies } = this.props;
     if (cookies.get('_favs__') !== undefined) {
-      const list = cookies.get('_favs__')
+      const list = cookies.get('_favs__');
+      this.setState({ isLoading: true });
       this.props.Punkapi.getIds(list.join('|')).then((res) => {
         let data = res.data;
-        this.setState({ favourites: data });
+        this.setState({ favourites: data, isLoading: false });
       });
     } else {
       this.setState({ favourites: [] });
@@ -173,9 +175,10 @@ class App extends Component {
   }
 
   searchBeers(term) {
-    this.setState({ page: 1 })
+    this.setState({ page: 1 });
+    this.setState({ isLoading: true });
     this.props.Punkapi.search(term).then((res) => {
-      this.setState({ beers: res.data });
+      this.setState({ beers: res.data, isLoading: false });
     });
   }
 
@@ -190,6 +193,7 @@ class App extends Component {
               return (<Home
                 {...props}
                 loadBeers={this.loadBeers}
+                isLoading={this.state.isLoading}
                 onClick={this.toggle}
                 beers={this.state.beers}
                 handleFavorite={this.handleFavorite}
@@ -203,6 +207,7 @@ class App extends Component {
               return (<Favourite
                 {...props}
                 onClick={this.toggle}
+                isLoading={this.state.isLoading}
                 loadFavourites={this.loadFavourites}
                 beers={this.state.favourites}
                 handleFavorite={this.handleFavorite}
@@ -214,6 +219,7 @@ class App extends Component {
               return (<Search
                 {...props}
                 loadBeers={this.loadBeers}
+                isLoading={this.state.isLoading}
                 onClick={this.toggle}
                 beers={this.state.beers}
                 handleFavorite={this.handleFavorite}
