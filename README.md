@@ -3,6 +3,7 @@ It's a work to **Turing Company**.
 
 ## Used Technologies
 ReactJS 
+Tests - Enzyme with Jest
 
 ## Available Scripts
 
