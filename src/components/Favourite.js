@@ -33,7 +33,7 @@ export class Favourite extends React.Component {
 
 
     render() {
-        const { beers } = this.props;
+        const { beers, isLoading } = this.props;
         return (
             <div className="row">
                 <div className="col-12">
@@ -43,13 +43,16 @@ export class Favourite extends React.Component {
                     </Breadcrumb>
                 </div>
                 {beers.length > 0 && beers.map(beer => this.renderBeer(beer))}
-                {beers.length === 0 && (
+                {!isLoading && beers.length === 0 && (
                     <div className="col-12">
                         <div className="alert alert-primary" role="alert">
                             Your Favourite list is empty.
                         </div>
                     </div>
                 )}
+                {isLoading && <div className="text-center mb-5 mt-5 col-12">
+                    <i class="fas fa-spinner fa-spin"></i> Loading...
+                </div>}
             </div>
         )
     }

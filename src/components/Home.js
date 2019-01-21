@@ -22,14 +22,14 @@ export class Home extends React.Component {
     }
 
     render() {
-        const { beers } = this.props;
+        const { beers, isLoading } = this.props;
         
         return (
             <div className="row">
                 {beers.map(beer => this.renderBeer(beer))}
-                <div className="text-center mb-5 mt-5 col-12">
+                {isLoading && <div className="text-center mb-5 mt-5 col-12">
                     <i class="fas fa-spinner fa-spin"></i> Loading...
-                </div>
+                </div>}
             </div>
         )
     }
