@@ -231,7 +231,7 @@ class App extends Component {
             </Button>
             <ModalBody>
               <div className="row">
-                <div className="col-4">
+                <div className="col-3">
                   <img src={this.state.beer.image_url} className="img-fluid" alt={this.state.beer.name} />
                 </div>
                 <div class="col-8">
@@ -252,10 +252,6 @@ class App extends Component {
                       return <li key={i}>{item}</li>
                     })}
                   </ul>
-                </div>
-              </div>
-              <div className="row">
-                <div className="col-12">
                   <h3>You might also like:</h3>
                   <div className="row similar-container">
                     {this.state.similar.map((item, i) => {
