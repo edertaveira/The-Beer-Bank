@@ -234,7 +234,7 @@ class App extends Component {
                 <div className="col-3">
                   <img src={this.state.beer.image_url} className="img-fluid" alt={this.state.beer.name} />
                 </div>
-                <div class="col-8">
+                <div className="col-8">
                   <h2>{this.state.beer.name}</h2>
                   <small>{this.state.beer.tagline}</small>
                   <div className="line-separate"><span></span></div>
