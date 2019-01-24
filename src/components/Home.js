@@ -28,7 +28,7 @@ export class Home extends React.Component {
             <div className="row">
                 {beers.map(beer => this.renderBeer(beer))}
                 {isLoading && <div className="text-center mb-5 mt-5 col-12">
-                    <i class="fas fa-spinner fa-spin"></i> Loading...
+                    <i className="fas fa-spinner fa-spin"></i> Loading...
                 </div>}
             </div>
         )

@@ -10,16 +10,6 @@ import { Home } from './components/Home';
 import { Search } from './components/Search';
 import { Header } from './components/Header';
 
-var prevScrollpos = window.pageYOffset;
-window.onscroll = function () {
-  var currentScrollPos = window.pageYOffset;
-  if (prevScrollpos > currentScrollPos) {
-    document.getElementById("navbar").style.top = "0";
-  } else {
-    document.getElementById("navbar").style.top = "-50px";
-  }
-  prevScrollpos = currentScrollPos;
-}
 
 class App extends Component {
 
@@ -36,7 +26,7 @@ class App extends Component {
       similar: [],
       favourites: [],
       isTyping: false,
-      inSearch: false, 
+      inSearch: false,
       isLoading: false
     }
     this.handleOnScroll = this.handleOnScroll.bind(this);
@@ -240,46 +230,52 @@ class App extends Component {
               <i className="fa fa-times"></i>
             </Button>
             <ModalBody>
-
-              <img src={this.state.beer.image_url} alt={this.state.beer.name} />
-
-
-              <h2>{this.state.beer.name}</h2>
-              <small>{this.state.beer.tagline}</small>
-              <div className="line-separate"><span></span></div>
-              <p>
-                <b>IBU:</b> {this.state.beer.ibu}
-                <b>ABV:</b> {this.state.beer.abv}
-                <b>EBC:</b> {this.state.beer.ebc}
-              </p>
-              <p>{this.state.beer.description}</p>
-              <p className="mt-10">
-                <b>Best server with:</b>
-              </p>
-              <ul>
-                {this.state.beer.food_pairing.map((item, i) => {
-                  return <li key={i}>{item}</li>
-                })}
-              </ul>
-              <h3>You might also like:</h3>
-              <div className="row similar-container">
-                {this.state.similar.map((item, i) => {
-                  return (
-                    <div key={item.id} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
-                      <Card>
-                        <div className="card-container" >
-                          <CardImg top width="100%" src={item.image_url} alt={item.name} />
-                          <CardBody>
-                            <CardTitle>{item.name}</CardTitle>
-                            <CardSubtitle>{item.tagline}</CardSubtitle>
-                          </CardBody>
-                        </div>
-                      </Card>
-                    </div>
-                  )
-                })}
+              <div className="row">
+                <div className="col-4">
+                  <img src={this.state.beer.image_url} className="img-fluid" alt={this.state.beer.name} />
+                </div>
+                <div class="col-8">
+                  <h2>{this.state.beer.name}</h2>
+                  <small>{this.state.beer.tagline}</small>
+                  <div className="line-separate"><span></span></div>
+                  <p>
+                    <b>IBU:</b> {this.state.beer.ibu}
+                    <b>ABV:</b> {this.state.beer.abv}
+                    <b>EBC:</b> {this.state.beer.ebc}
+                  </p>
+                  <p>{this.state.beer.description}</p>
+                  <p className="mt-10">
+                    <b>Best server with:</b>
+                  </p>
+                  <ul>
+                    {this.state.beer.food_pairing.map((item, i) => {
+                      return <li key={i}>{item}</li>
+                    })}
+                  </ul>
+                </div>
               </div>
-
+              <div className="row">
+                <div className="col-12">
+                  <h3>You might also like:</h3>
+                  <div className="row similar-container">
+                    {this.state.similar.map((item, i) => {
+                      return (
+                        <div key={item.id} className="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+                          <Card>
+                            <div className="card-container" >
+                              <CardImg top width="100%" src={item.image_url} alt={item.name} />
+                              <CardBody>
+                                <CardTitle>{item.name}</CardTitle>
+                                <CardSubtitle>{item.tagline}</CardSubtitle>
+                              </CardBody>
+                            </div>
+                          </Card>
+                        </div>
+                      )
+                    })}
+                  </div>
+                </div>
+              </div>
 
             </ModalBody>
           </Modal>
